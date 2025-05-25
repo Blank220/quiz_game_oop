@@ -23,19 +23,19 @@ class QuizPlayer(QuizBase):
 
 #formatting of the questions/choices
 
-    i = 0
-    while i < len(lines):
-        if lines[i].startswith('#QUESTIONS'):
-            q = lines[i + 1].strip()
-            a = lines[i + 3].strip()
-            b = lines[i + 4].strip()
-            c = lines[i + 5].strip()
-            d = lines[i + 6].strip()
-            correct = lines[i + 7].strip()[-1]
-            questions.append((q,a,b,c,d,correct))
-            i += 9
-        else:
-            i += 1
+        i = 0
+        while i < len(lines):
+            if lines[i].startswith('#QUESTIONS'):
+                q = lines[i + 1].strip()
+                a = lines[i + 3].strip()
+                b = lines[i + 4].strip()
+                c = lines[i + 5].strip()
+                d = lines[i + 6].strip()
+                correct = lines[i + 7].strip()[-1]
+                self.questions.append((q,a,b,c,d,correct))
+                i += 9
+            else:
+                i += 1
 
     def play(self):
         self.greet()
@@ -72,20 +72,21 @@ class QuizPlayer(QuizBase):
             time.sleep(1)
             print('✅ Correct!')
             winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)
-            score += 1
+            self.score += 1
         else:
             print('Checking answer...')
             time.sleep(1)
             print(f'❌ Wrong! The correct answer is {q[5]}')
             winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
 
-    self.show_score()
+        self.show_score()
 
-def show_score(self):
-    total = len(self.questions)
-if score == 0:
-   print(f'Wala Kang Tinama Kahit Isa, Mag Review Ka Pa! {score} out of {len(questions)}')
-elif score == len(questions):
-   print(f'Wow, Sanaol Perpek {score} out of {len(questions)}')
-else:
-   print(f'Finished! You Did A Wonderful Job! \nYou got {score} out of {len(questions)}')
+    def show_score(self):
+        total = len(self.questions)
+        print()
+        if self.score == 0:
+            print(f'Wala Kang Tinama Kahit Isa, Mag Review Ka Pa! {self.score} out of {len(total)}')
+        elif self.score == len(total):
+            print(f'Wow, Sanaol Perpek {self.score} out of {len(total)}')
+        else:
+            print(f'Finished! You Did A Wonderful Job! \nYou got {self.score} out of {len(total)}')
