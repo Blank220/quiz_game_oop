@@ -2,10 +2,6 @@ import random
 import time
 import winsound
   
-#open the quiz file and read it
-with open('quiz.txt', 'r') as file:
-   lines = file.readlines()
-
 class QuizBase:                    #Introduction to the Game
     def greet(self):
         print('WELCOME TO QUIZ LEGENDS!'.center(80))
@@ -14,6 +10,16 @@ class QuizBase:                    #Introduction to the Game
         time.sleep(1)
         print('Loading......'.center(80))
         time.sleep(2)
+
+class QuizPlayer(QuizBase):
+    def __init__(self, filename = 'quiz.txt'):
+        self.filename = filename
+        self.questions = []
+        self.score = 0
+
+    def load_questions(self):
+        with open('quiz.txt', 'r') as file:                 #opens and read the quiz file
+            lines = file.readlines()
 
 #formatting of the questions/choices
 questions = []
