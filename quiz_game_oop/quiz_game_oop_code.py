@@ -40,9 +40,9 @@ class QuizPlayer(QuizBase):
     def play(self):
         self.greet()
         self.load_questions()
-        random.shuffle(questions)               #choosing random questions
+        random.shuffle(self.questions)               #choosing random questions
 
-        for q in questions:
+        for q in self.questions:
             print('\n' + q[0])
             print(q[1])
             print(q[2])
@@ -67,17 +67,17 @@ class QuizPlayer(QuizBase):
             if ans == 'x':
                 break
 
-        if ans == q[5]:
-            print('Checking answer...')
-            time.sleep(1)
-            print('✅ Correct!')
-            winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)
-            self.score += 1
-        else:
-            print('Checking answer...')
-            time.sleep(1)
-            print(f'❌ Wrong! The correct answer is {q[5]}')
-            winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
+            if ans == q[5]:
+                print('Checking answer...')
+                time.sleep(1)
+                print('✅ Correct!')
+                winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)
+                self.score += 1
+            else:
+                print('Checking answer...')
+                time.sleep(1)
+                print(f'❌ Wrong! The correct answer is {q[5]}')
+                winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
 
         self.show_score()
 
@@ -85,8 +85,8 @@ class QuizPlayer(QuizBase):
         total = len(self.questions)
         print()
         if self.score == 0:
-            print(f'Wala Kang Tinama Kahit Isa, Mag Review Ka Pa! {self.score} out of {len(total)}')
-        elif self.score == len(total):
-            print(f'Wow, Sanaol Perpek {self.score} out of {len(total)}')
+            print(f'Wala Kang Tinama Kahit Isa, Mag Review Ka Pa! {self.score} out of {total}')
+        elif self.score == total:
+            print(f'Wow, Sanaol Perpek {self.score} out of {total}')
         else:
-            print(f'Finished! You Did A Wonderful Job! \nYou got {self.score} out of {len(total)}')
+            print(f'Finished! You Did A Wonderful Job! \nYou got {self.score} out of {total}')
