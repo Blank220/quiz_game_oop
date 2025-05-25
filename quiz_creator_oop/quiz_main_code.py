@@ -1,12 +1,17 @@
 import time
-#marks how many question is saved
-counter = 0
-print('WELCOME TO QUIZ LEGENDS!'.center(80))
-time.sleep(2)
-print('Get Ready To Create The Ultimate Quiz!'.center(80))
-time.sleep(1)
-print('Loading......'.center(80))
-time.sleep(2)
+
+
+class QuizBase:
+    def __init__(self):
+        self.counter = 0        #marks how many question is saved
+    
+    def greet(self):
+        print('WELCOME TO QUIZ LEGENDS!'.center(80))
+        time.sleep(2)
+        print('Get Ready To Create The Ultimate Quiz!'.center(80))
+        time.sleep(1)
+        print('Loading......'.center(80))
+        time.sleep(2)
 
 #ask user for a question or give them the choice to exit
 while True:
