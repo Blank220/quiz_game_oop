@@ -6,13 +6,14 @@ import winsound
 with open('quiz.txt', 'r') as file:
    lines = file.readlines()
 
-#Introduction to the Game
-print('WELCOME TO QUIZ LEGENDS!'.center(80))
-time.sleep(2)
-print('Get Ready To Answer The Ultimate Quiz!'.center(80))
-time.sleep(1)
-print('Loading......'.center(80))
-time.sleep(2)
+class QuizBase:                    #Introduction to the Game
+    def greet(self):
+        print('WELCOME TO QUIZ LEGENDS!'.center(80))
+        time.sleep(2)
+        print('Get Ready To Answer The Ultimate Quiz!'.center(80))
+        time.sleep(1)
+        print('Loading......'.center(80))
+        time.sleep(2)
 
 #formatting of the questions/choices
 questions = []
