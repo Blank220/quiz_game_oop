@@ -13,6 +13,10 @@ class QuizBase:
         print('Loading......'.center(80))
         time.sleep(2)
 
+class Quiz(QuizBase):
+    def run(self):
+        self.greet()
+
 #ask user for a question or give them the choice to exit
 while True:
     question = input('Enter A Question Of Your Choice Or Type "x" To Stop: *')
